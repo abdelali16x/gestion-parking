@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de parc</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <script>
+        function updateDocMatricule() {
+          var vehiculeMatricule = document.getElementById("vehiculeMatricule");
+          var docMatricule = document.getElementById("docMatricule");
+          docMatricule.value = vehiculeMatricule.value;
+          var repMatricule = document.getElementById("repMatricule");
+          repMatricule.value = vehiculeMatricule.value;
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+    
+
+<body>
+<head>
+
+    <header>
+        <div class="logo">
+          <img src="img/logo.png" alt="Logo">
+        </div>
+        <h1 class="title">Gestion De Parking</h1>
+        <nav>
+          <ul class="menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="veh.html">Vehicule</a></li>
+            <li><a href="#">Document</a></li>
+            <li><a href="#">Reparation</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+       
+           <div id="searchResults" class="search">
+                     <form action="search.php" method="GET">
+                     <input type="text" name="searchTerm" placeholder="Enter a search term">
+                    <button type="submit">Search</button>
+                     </form>
+             </div> 
+     <!-- Replace this comment with your existing search bar code -->
+      
+      </header>
+      
+
+
+    
+
+
+    <h1>Vehicule</h1>
+    <section>
+        <div class="Vehicules">
+            
+            <form action="ve.php" method="post">
+                <label for="matricule">Matricule</label>
+                <input type="text" name="Matricule" id="vehiculeMatricule" oninput="updateDocMatricule()" />
+                <label for="type of car">Marque</label>
+                <input type="text" name="Marque" id="marque" />
+                <label for="carbur">Carburant</label>
+                <select id="carbur" name="Carbur">
+                    <option value="Essence">Essence</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electrique">Electrique</option>
+                </select>
+                <label for="p_p">Pascal</label>
+                <input type="number" name="Pascal" id="type" />
+                <button onclick="showPopup('vehicule')">Ajouter</button>
+                <div id="popup-vehicule" class="popup">
+                    <div class="popup-content">
+                        <span class="close" onclick="hidePopup('vehicule')">&times;</span>
+                        <h2>Message important!</h2>
+                        <p id="popup-message-vehicule">succes d'insertion</p>
+                    </div>
+                </div>
+               
+            </form> 
+               
+        </div>
+
+<div id="dataveh" class="position_table"></div>
+     
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<h1>Documents</h1>
+    <section>
+        <div class="doc">
+            
+            <form action="doc.php" method="post">
+                <label for="matricule">Matricule</label>
+                <input type="text" name="Matricule" id="docMatricule" readonly />
+                <label for="type_doc">Type Documents</label>
+                <select name="type_doc" id="type_doc">
+                    <option value="vistie technique">Visite technique</option>
+                    <option value="assurance">Assurance</option>
+                    <option value="vignette">Vignette</option>
+                </select>
+                <label for="date_doc">Date Document</label>
+                <input type="date" name="date_doc" id="date_doc" />
+                <label for="date_exp">Date Expiration</label>
+                <input type="date" name="date_exp" id="date_exp" />
+                <button onclick="showPopup('document')">Ajouter</button>
+<div id="popup-document" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hidePopup('document')">&times;</span>
+        <h2>Message important!</h2>
+        <p>Succès de l'insertion</p>
+    </div>
+</div>
+
+                
+
+
+
+
+
+
+
+
+
+
+            </form>
+        </div>
+        <div id="datadoc" class="position_table"></div>
+
+    </section>
+
+ 
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+<h1>Reparation</h1>
+    <section>
+        <div class="reparation">
+            
+            <form action="rep.php" method="post">
+                <label for="matricule">Matricule</label>
+                <input type="text" name="Matricule" id="repMatricule" readonly />
+                <label for="type de reparation">Type de reparation</label>
+                <input name="type_reparation" id="type de reparation" type="text" />
+                <label for="date de reparation">Date de reparation</label>
+                <input name="date_reparation" id="date de reparation" type="date" />
+                <label for="cout">Cout de reparation</label>
+                <input type="text" name="cout_reparation" id="" />
+                <label for="observation">Observation</label>
+                <textarea name="observation" id="Observation" cols="30" rows="10"></textarea>
+                <button onclick="showPopup('reparation')">Ajouter</button>
+<div id="popup-reparation" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hidePopup('reparation')">&times;</span>
+        <h2>Message important!</h2>
+        <p>Succès de l'insertion</p>
+    </div>
+</div>
+            </form>
+        </div>
+      <div id="datarep" class="position_table"></div>    
+    </section>
+  
+
+
+
+
+
+    <h1>Toutes Les Vehicules</h1>
+<div id="alldata"></div>    
+<!---------footer-->
+<footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+<p>The website was created by SADIK Abdelali</p> 
+<p>12/06/2023</p> 
+      </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>123 Street, City, Country</p>
+          <p>Phone: +1 123 456789</p>
+          <p>Email: info@example.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
